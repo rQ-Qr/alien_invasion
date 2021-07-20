@@ -6,7 +6,7 @@ import edu.mygdx.model.GameModel;
 import javax.swing.*;
 import java.awt.*;
 
-public class GameView implements Ite {
+public class GameView {
     JFrame frame;
     GamePanel panel;
     GameController controller;
@@ -30,7 +30,7 @@ public class GameView implements Ite {
             try {
                 Thread.sleep(2);
             } catch (Exception e) {
-                System.out.println(e);
+                break;
             }
 
             controller.checkState();
