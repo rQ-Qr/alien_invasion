@@ -4,11 +4,21 @@ import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
+import edu.mygdx.controller.GameController;
+import edu.mygdx.model.GameModel;
+import edu.mygdx.view.GameView;
 
 public class MyGdxGame extends ApplicationAdapter {
 	SpriteBatch batch;
 	Texture img;
-	
+
+	public static void main(String[] args) {
+		GameModel models = new GameModel();
+		GameController controller = new GameController(models);
+		GameView view = new GameView(models, controller);
+		view.startGame();
+	}
+
 	@Override
 	public void create () {
 		batch = new SpriteBatch();

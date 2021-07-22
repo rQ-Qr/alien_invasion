@@ -2,7 +2,7 @@ package edu.mygdx.controller;
 
 import java.awt.*;
 
-public class Setting {
+public class Settingwrong {
     int screenWidth;
     int screenHeight;
     Color bgColor;
