@@ -7,7 +7,7 @@ public class Setting {
     static public int screenHeight = 650;
 
     static int shipSize = 50;
-    static int shipX = screenWidth/2;
+    static int shipX = screenWidth/2-shipSize/2;
     static int shipY = screenHeight-shipSize-10;
     static double shipSpeedFactor = 1.5;
     static int shipLimit = 3;

@@ -43,8 +43,7 @@ public class GamePanel extends JPanel {
 
     protected void drawAliens(Graphics g) {
         List<Alien> aliens = models.getAliens();
-        int size = aliens.size();
-        for(int i=0; i<size; i++) {
+        for(int i=0; i<aliens.size(); i++) {
             Alien alien = aliens.get(i);
             g.drawImage(alien.getImage(), alien.getX(), alien.getY(), alien.getSize(), alien.getSize(), this);
         }

@@ -12,7 +12,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class GameController implements KeyListener, MouseListener {
+public class GameController implements KeyListener {
     GameModel models;
     public GameController(GameModel models) {
         this.models = models;
@@ -145,30 +145,5 @@ public class GameController implements KeyListener, MouseListener {
     public void keyReleased(KeyEvent e) {
         if(e.getKeyCode()==37) models.getShip().setLeft(false);
         if(e.getKeyCode()==39) models.getShip().setRight(false);
-    }
-
-    @Override
-    public void mouseClicked(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-
     }
 }
