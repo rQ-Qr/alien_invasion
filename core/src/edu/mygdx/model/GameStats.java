@@ -9,6 +9,10 @@ public class GameStats {
         resetStats();
     }
 
+    public void resetGameState(){
+        gameState = true;
+    }
+
     public boolean getState() {
         return gameState;
     }

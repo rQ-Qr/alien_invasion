@@ -13,7 +13,7 @@ public class GameView {
     GamePanel panel;
     GameController controller;
     GameModel models;
-    JButton button;
+    Button button;
 
     public GameView(GameModel models, GameController controller) {
         frame = new JFrame();
@@ -41,6 +41,7 @@ public class GameView {
                     break;
                 }
             }
+            models.stats.resetGameState();
             while(models.stats.getState()) {
                 try {
                     Thread.sleep(2);
@@ -53,6 +54,5 @@ public class GameView {
             this.button.setEnabled(true);
             this.button.setVisible(true);
         }
-
     }
 }
