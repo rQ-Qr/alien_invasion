@@ -51,9 +51,10 @@ public class GamePanel extends JPanel {
         String score = String.valueOf(models.stats.getScore());
         String highScore = String.valueOf(models.stats.getHighScore());
         String level = String.valueOf(models.stats.getLevel());
-        g.drawString(score, 20, 20);
-        g.drawString(level, 20, 40);
-        g.drawString(highScore, 490, 20);
+        g.setFont(new Font(" ",Font.BOLD,20));
+        g.drawString(score, 20, 25);
+        g.drawString(level, 20, 50);
+        g.drawString(highScore, 480, 25);
         for(Ship ship : models.stats.getShips()) {
             g.drawImage(ship.getImage(), ship.getX(), ship.getY(), ship.getSize(), ship.getSize(), this);
         }

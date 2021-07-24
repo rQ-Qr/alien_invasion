@@ -13,7 +13,7 @@ public class Button extends JButton {
         Font font = new Font("", Font.BOLD, 20);
         super.setFont(font);
         super.setForeground(new Color(0, 255, 0));
-        super.setLocation(200, 300);
+        super.setBounds(400, 300, 200, 50);
         super.setVisible(true);
         super.addMouseListener(new MouseListener() {
             @Override

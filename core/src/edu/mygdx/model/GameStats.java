@@ -21,8 +21,8 @@ public class GameStats {
 
     public void creatShips() {
         ships = new ArrayList<>();
-        for(int i=0; i<shipNum; i++) {
-            int x = Setting.screenWidth - (i+1) * 40;
+        for (int i = 0; i < shipNum; i++) {
+            int x = Setting.screenWidth - (i + 1) * 40;
             int y = 10;
             Ship ship = new Ship(x, y, 30);
             ships.add(ship);

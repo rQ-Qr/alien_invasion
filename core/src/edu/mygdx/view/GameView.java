@@ -21,7 +21,9 @@ public class GameView {
         this.models = models;
         this.controller = controller;
         this.button = new Button();
+
         panel = new GamePanel(models);
+        panel.setLayout(null);
         panel.addKeyListener(controller);
         panel.add(this.button);
         panel.setPreferredSize(new Dimension(Setting.screenWidth, Setting.screenHeight));
@@ -40,6 +42,7 @@ public class GameView {
                     break;
                 }
             }
+
             while(models.stats.getState()) {
                 try {
                     Thread.sleep(10);
@@ -53,7 +56,7 @@ public class GameView {
             Setting.resetSpeed();
             this.button.setEnabled(true);
             this.button.setVisible(true);
+            panel.paint();
         }
-
     }
 }
