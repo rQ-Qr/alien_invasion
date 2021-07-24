@@ -9,7 +9,7 @@ public class Setting {
     static int shipSize = 50;
     static int shipX = screenWidth/2-shipSize/2;
     static int shipY = screenHeight-shipSize-10;
-    static double shipSpeedFactor = 1.5;
+    static double shipSpeedFactor = 4;
     static int shipLimit = 3;
 
     static int alienSize = 50;
@@ -17,9 +17,30 @@ public class Setting {
     static int alienDropSpeed = 10;
     static public int alienDirection = 1;
 
-    static int bulletSpeedFactor = 3;
+    static int scoreScale = 10;
+    static int alienPoints = 50;
+
+    static int bulletSpeedFactor = 5;
     static int bulletWidth = 3;
     static int bulletHeight = 15;
     static Color bulletColor = new Color(60, 60, 60);
+
+    static int speedup_scale = 1;
+
+    public static void resetSpeed() {
+        shipSpeedFactor = 1;
+        bulletSpeedFactor = 3;
+        alienSpeedFactor = 1;
+        alienDirection = 1;
+        alienPoints = 50;
+    }
+
+    public static void increaseSpeed() {
+        shipSpeedFactor += 1;
+        bulletSpeedFactor += 1;
+        alienSpeedFactor += 1;
+        alienDirection = 1;
+        alienPoints += scoreScale;
+    }
 
 }

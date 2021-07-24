@@ -1,9 +1,6 @@
 package edu.mygdx.view;
 
-import edu.mygdx.model.Alien;
-import edu.mygdx.model.Bullet;
-import edu.mygdx.model.GameModel;
-import edu.mygdx.model.Ship;
+import edu.mygdx.model.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,7 +10,7 @@ public class GamePanel extends JPanel {
     GameModel models;
     public GamePanel(GameModel models) {
         this.models = models;
-        this.setFocusable(true);
+        super.setFocusable(true);
     }
 
     public void paint() {
@@ -26,26 +23,39 @@ public class GamePanel extends JPanel {
         drawShip(g);
         drawBullets(g);
         drawAliens(g);
+        drawScore(g);
     }
 
-    protected void drawShip(Graphics g) {
+    private void drawShip(Graphics g) {
         Ship ship = models.getShip();
         g.drawImage(ship.getImage(), ship.getX(), ship.getY(), ship.getSize(), ship.getSize(), this);
     }
 
-    protected void drawBullets(Graphics g) {
+    private void drawBullets(Graphics g) {
         List<Bullet> bullets = models.getBullets();
         for(Bullet bullet : bullets) {
-            g.setColor(new Color(60, 60, 60));
+            g.setColor(bullet.getColor());
             g.fillRect(bullet.getX(), bullet.getY(), bullet.getWidth(), bullet.getHeight());
         }
     }
 
-    protected void drawAliens(Graphics g) {
+    private void drawAliens(Graphics g) {
         List<Alien> aliens = models.getAliens();
         for(int i=0; i<aliens.size(); i++) {
             Alien alien = aliens.get(i);
             g.drawImage(alien.getImage(), alien.getX(), alien.getY(), alien.getSize(), alien.getSize(), this);
+        }
+    }
+
+    private void drawScore(Graphics g) {
+        String score = String.valueOf(models.stats.getScore());
+        String highScore = String.valueOf(models.stats.getHighScore());
+        String level = String.valueOf(models.stats.getLevel());
+        g.drawString(score, 20, 20);
+        g.drawString(level, 20, 40);
+        g.drawString(highScore, 490, 20);
+        for(Ship ship : models.stats.getShips()) {
+            g.drawImage(ship.getImage(), ship.getX(), ship.getY(), ship.getSize(), ship.getSize(), this);
         }
     }
 }

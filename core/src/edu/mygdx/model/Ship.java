@@ -23,13 +23,24 @@ public class Ship {
         this.y = y;
     }
 
+    public Ship(int x, int y, int size) {
+        try{
+            this.image = ImageIO.read(new File("./core/assets/figures/ship.png"));
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        this.x = x;
+        this.y = y;
+        this.size = size;
+    }
+
     public void leftMove() {
-        if(x-1>=0) x -= 1;
+        if(x-Setting.shipSpeedFactor>=0) x -= Setting.shipSpeedFactor;
         else x = 0;
     }
 
     public void rightMove() {
-        if(x+1<=boundary-50) x += 1;
+        if(x+Setting.shipSpeedFactor<=boundary-50) x += Setting.shipSpeedFactor;
         else x = boundary-50;
     }
 

@@ -11,11 +11,11 @@ public class Button extends JButton {
     public Button() {
         super("PLAY");
         Font font = new Font("", Font.BOLD, 20);
-        this.setFont(font);
-        this.setForeground(new Color(0, 255, 0));
-        this.setLocation(400, 300);
-        this.setVisible(true);
-        this.addMouseListener(new MouseListener() {
+        super.setFont(font);
+        super.setForeground(new Color(0, 255, 0));
+        super.setLocation(200, 300);
+        super.setVisible(true);
+        super.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 Button.super.setVisible(false);

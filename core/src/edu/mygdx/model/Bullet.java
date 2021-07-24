@@ -1,10 +1,13 @@
 package edu.mygdx.model;
 
+import java.awt.*;
+
 public class Bullet {
     int x;
     int y;
     int width;
     int height;
+    Color color;
 
     public void move() {
         y -= Setting.bulletSpeedFactor;
@@ -15,6 +18,7 @@ public class Bullet {
         this.y = y;
         this.height = height;
         this.width = width;
+        this.color = Setting.bulletColor;
     }
 
 
@@ -32,5 +36,9 @@ public class Bullet {
 
     public int getHeight() {
         return height;
+    }
+
+    public Color getColor() {
+        return color;
     }
 }

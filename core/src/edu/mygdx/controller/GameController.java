@@ -5,8 +5,6 @@ import edu.mygdx.model.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -21,7 +19,14 @@ public class GameController implements KeyListener {
     public void checkState() {
         updateShip();
         updateBullets();
-        updateAliens();
+        if(models.getAliens().size()==0) {
+            models.getBullets().clear();
+            models.getShip().recenter();
+            models.stats.levelUp();
+            models.createAliens();
+            Setting.increaseSpeed();
+        }
+        else updateAliens();
     }
 
     public void updateShip() {
@@ -83,10 +88,7 @@ public class GameController implements KeyListener {
         }
         for(Alien alien : alienSet) {
             aliens.remove(alien);
-        }
-        if(aliens.size()==0) {
-            bullets.clear();
-            models.createAliens();
+            models.stats.addPoints();
         }
     }
 
@@ -134,9 +136,7 @@ public class GameController implements KeyListener {
             List<Bullet> bullets = models.getBullets();
             if(bullets.size()<3) {
                 Ship ship = models.getShip();
-                Bullet bullet = new Bullet(ship.getX()+ship.getSize()/2-1, ship.getY()-15,
-                        3, 15);
-                bullets.add(bullet);
+                models.addBullet();
             }
         }
     }

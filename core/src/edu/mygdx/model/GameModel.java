@@ -8,7 +8,6 @@ public class GameModel {
     Ship ship;
     List<Bullet> bullets;
     List<Alien> aliens;
-    Alien alien;
     public GameStats stats;
 
     public GameModel() {
@@ -35,6 +34,12 @@ public class GameModel {
         }
 
         this.aliens = list;
+    }
+
+    public void addBullet() {
+        Bullet bullet = new Bullet(ship.getX()+ship.getSize()/2-1, ship.getY()-15,
+                Setting.bulletWidth, Setting.bulletHeight);
+        bullets.add(bullet);
     }
 
     private int getAliensCols() {
