@@ -46,7 +46,7 @@ public class Alien {
 
     public Alien(int x, int y) {
         try{
-            this.image = ImageIO.read(new File("./core/assets/figures/alien.bmp"));
+            this.image = ImageIO.read(new File("./core/assets/figures/alien.png"));
         } catch (Exception e) {
             System.out.println(e);
         }

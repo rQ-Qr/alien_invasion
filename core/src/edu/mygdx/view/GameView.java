@@ -27,7 +27,7 @@ public class GameView {
         panel.addKeyListener(controller);
         panel.add(this.button);
         panel.setPreferredSize(new Dimension(Setting.screenWidth, Setting.screenHeight));
-        panel.setBackground(new Color(230, 230, 230));
+        //panel.setBackground(new Color(230, 230, 230));
         frame.add(panel);
         frame.pack();
         frame.setVisible(true);
@@ -45,7 +45,7 @@ public class GameView {
 
             while(models.stats.getState()) {
                 try {
-                    Thread.sleep(10);
+                    Thread.sleep(15);
                 } catch (Exception e) {
                     break;
                 }

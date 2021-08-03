@@ -12,9 +12,9 @@ public class Setting {
     static double shipSpeedFactor = 4;
     static int shipLimit = 3;
 
-    static int alienSize = 50;
+    static int alienSize = 45;
     static double alienSpeedFactor = 1;
-    static int alienDropSpeed = 10;
+    static int alienDropSpeed = 5;
     static public int alienDirection = 1;
 
     static int scoreScale = 10;
@@ -23,7 +23,7 @@ public class Setting {
     static int bulletSpeedFactor = 5;
     static int bulletWidth = 3;
     static int bulletHeight = 15;
-    static Color bulletColor = new Color(60, 60, 60);
+    static Color bulletColor = new Color(255, 255, 0);
 
     static int speedup_scale = 1;
 
