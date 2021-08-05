@@ -10,6 +10,7 @@ public class GameModel {
     List<Alien> aliens;
     public GameStats stats;
 
+
     public GameModel() {
         this.stats = new GameStats();
         this.ship = new Ship(Setting.shipX, Setting.shipY);

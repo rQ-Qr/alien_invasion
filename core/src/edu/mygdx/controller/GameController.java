@@ -84,6 +84,7 @@ public class GameController implements KeyListener {
             }
         }
         for(Bullet bullet : bulletSet) {
+            Sound.playSound(Sound.alienCollision());
             bullets.remove(bullet);
         }
         for(Alien alien : alienSet) {
@@ -108,6 +109,7 @@ public class GameController implements KeyListener {
         for(Alien alien : aliens) {
             Rectangle alienRec = new Rectangle(alien.getX(), alien.getY(), alien.getSize(), alien.getSize());
             if(shipRec.intersects(alienRec)) {
+                Sound.playSound(Sound.explosion());
                 shipHit(ship);
                 break;
             }
@@ -134,6 +136,7 @@ public class GameController implements KeyListener {
         if(e.getKeyCode()==39) models.getShip().setRight(true);
         if(e.getKeyCode()==32) {
             List<Bullet> bullets = models.getBullets();
+            Sound.playSound(Sound.shootSound());
             if(bullets.size()<3) {
                 Ship ship = models.getShip();
                 models.addBullet();

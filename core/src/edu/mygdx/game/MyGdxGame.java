@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 import edu.mygdx.controller.GameController;
 import edu.mygdx.model.GameModel;
+import edu.mygdx.model.Sound;
 import edu.mygdx.view.GameView;
 
 public class MyGdxGame extends ApplicationAdapter {
@@ -16,6 +17,7 @@ public class MyGdxGame extends ApplicationAdapter {
 		GameModel models = new GameModel();
 		GameController controller = new GameController(models);
 		GameView view = new GameView(models, controller);
+		Sound.playSound(Sound.opening());
 		view.startGame();
 	}
 
