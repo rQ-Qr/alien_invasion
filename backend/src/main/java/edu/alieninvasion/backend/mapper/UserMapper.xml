@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.alieninvasion.backend.mapper.UserMapper">
+    <select id="loadUserByUsername" resultType="User">
+        SELECT * FROM `user` WHERE username=#{username}
+    </select>
+    <insert id="reg" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO `user` set username=#{username},password=#{password}, `role`=#{role}
+    </insert>
+
+    <select id="getUserById" resultType="User">
+        SELECT * FROM `user` WHERE id =#{id}
+    </select>
+
+    <delete id="deleteUserById">
+        DELETE FROM `user` WHERE id=#{id}
+    </delete>
+
+    <insert id="setUserRole">
+        INSERT INTO `user`(role) VALUES #{role} where id=#{id}
+    </insert>
+
+    <insert id="regStatisticsPerDay">
+        INSERT INTO statistics set `date` = CURRENT_DATE(), `count` = 0
+    </insert>
+
+    <update id="updateStatistics">
+        UPDATE statistics SET `count` = `count`+1 WHERE `date` = CURRENT_DATE()
+    </update>
+
+    <select id="getDate" resultType="String">
+        SELECT `date` from statistics ORDER by `date` limit 7
+    </select>
+
+    <select id="getDataStatistics" resultType="int">
+        SELECT `count` from statistics ORDER by `date` limit 7
+    </select>
+
+</mapper>

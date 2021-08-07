@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.alieninvasion.backend.mapper.CommentMapper">
+
+    <insert id="addNewComment" parameterType="Comment" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO comment SET content=#{content}, uid=#{uid}, editTime=#{editTime}, username = #{username}
+    </insert>
+
+    <update id="updateComment" parameterType="Comment">
+        UPDATE comment SET content=#{content}, editTime=#{editTime} WHERE id=#{id}
+    </update>
+
+    <delete id="deleteCommentById">
+        DELETE FROM comment WHERE id = #{cid}
+    </delete>
+
+    <select id="getCommentByUid" resultType="Comment">
+        SELECT * FROM comment where uid = #{uid} ORDER BY comment.editTime DESC limit #{start},#{count};
+    </select>
+
+    <select id="getAllComment" resultType="Comment">
+        SELECT * FROM comment ORDER BY comment.editTime DESC limit #{start},#{count};
+    </select>
+
+    <select id="getCommentCountByUid" resultType="Integer">
+        SELECT count(*) FROM comment where uid = #{uid};
+    </select>
+
+    <select id="getCommentCount" resultType="Integer">
+        SELECT count(*) FROM comment;
+    </select>
+
+</mapper>
