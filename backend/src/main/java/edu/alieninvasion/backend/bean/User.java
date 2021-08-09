@@ -1,10 +1,13 @@
 package edu.alieninvasion.backend.bean;
 
+import java.sql.Timestamp;
+
 public class User {
     private Long id;
     private String username;
     private String password;
     private Long role;
+    private Timestamp regTime;
 
     public Long getId() {
         return id;
@@ -36,6 +39,14 @@ public class User {
 
     public void setRole(Long role) {
         this.role = role;
+    }
+
+    public Timestamp getRegTime() {
+        return regTime;
+    }
+
+    public void setRegTime(Timestamp regTime) {
+        this.regTime = regTime;
     }
 
 }

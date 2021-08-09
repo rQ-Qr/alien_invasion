@@ -24,8 +24,6 @@
     export default{
         name: "DataCount",
         created() {
-          var dateArr = [];
-          var dsArr = [];
           getRequest("/dataStatistics").then(resp=> {
             if (resp.status == 200) {
               resp.data.date.map((item)=>{
@@ -34,6 +32,8 @@
               resp.data.ds.map((item)=>{
                 this.polar.series[0].data.push(item);
               })
+              this.polar.xAxis.data.reverse();
+              this.polar.series[0].data.reverse();
             } else {
               this.$message({type: 'error', message: 'Data load fail!'});
             }

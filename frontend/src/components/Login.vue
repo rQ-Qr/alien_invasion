@@ -1,18 +1,24 @@
 <template>
-  <div class="login">
-    <div>
-      <el-input placeholder="please input username" v-model="name" clearable class="input_style"></el-input>
-      <span v-if="error.name" class="err-msg">{{error.name}}</span>
-    </div>
-    <div>
-      <el-input placeholder="please input password" v-model="pwd" show-password class="input_style"></el-input>
-      <span v-if="error.pwd" class="err-msg">{{error.pwd}}</span>
-    </div>
-    <div>
-      <el-button type="primary" @click="reg" class="login_style">Register</el-button>
-    </div>
-    <div>
-      <el-button type="primary" @click="login" class="login_style">Login</el-button>
+  <div>
+    <h2>Alien Invasion</h2>
+    <div class="login">
+      <div>
+        <el-input placeholder="please input username" v-model="name" clearable class="input_style"></el-input>
+        <span v-if="error.name" class="err-msg">{{error.name}}</span>
+      </div>
+      <div>
+        <el-input placeholder="please input password" v-model="pwd" show-password class="input_style"></el-input>
+        <span v-if="error.pwd" class="err-msg">{{error.pwd}}</span>
+      </div>
+      <div>
+        <el-button style="margin-top: 5px; background-color: green; border:none" type="primary" @click="login" class="login_style">Login</el-button>
+      </div>
+      <div >
+        <el-button style="margin-top: 13px" type="primary" @click="reg" class="login_style">Register</el-button>
+      </div>
+      <div >
+        <el-checkbox style="margin-top: 5px" @change="changeRole" v-model="checked">Apply for the Premium</el-checkbox>
+      </div>
     </div>
   </div>
 </template>
@@ -28,6 +34,7 @@
         name: '',
         pwd : '',
         role: 0,
+        checked: false,
         error : {
           name: '',
           pwd : ''
@@ -35,6 +42,11 @@
       }
     },
     methods:{
+      changeRole() {
+        var _this = this;
+        if(_this.checked) _this.role = 1;
+        else _this.role = 0;
+      },
       reg(){
         var _this = this;
         const { name, pwd, role, $router} = this
@@ -67,6 +79,7 @@
           _this.$alert('server doesn\'t exist\\⊙﹏⊙∥!', 'Fail!');
         });
       },
+
       login(){
         var _this = this;
         const { name, pwd, $router} = this
@@ -103,7 +116,7 @@
 
 <style>
   .login{
-    margin-top: 200px;
+    margin-top: 80px;
   }
   .input_style{
     width: 200px;

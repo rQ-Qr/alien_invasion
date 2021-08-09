@@ -6,6 +6,7 @@ import router from './router';
 import ElementUI from 'element-ui';
 import global from './utils/global';
 import 'element-ui/lib/theme-chalk/index.css';
+import './utils/filter_utils.js'
 
 Vue.prototype.global = global
 Vue.use(ElementUI)

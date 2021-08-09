@@ -18,6 +18,8 @@ public interface UserMapper {
 
     User getUserById(@Param("id") Long id);
 
+    List<User> getUserByUsername(@Param("username") String username);
+
     void regStatisticsPerDay();
 
     void updateStatistics();

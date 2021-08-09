@@ -41,17 +41,6 @@ public class CommentController {
         return new RespBean("error", "Delete Fail!");
     }
 
-    @RequestMapping(value = "/user", method = RequestMethod.GET)
-    public Map<String, Object> getAllComment(@RequestParam(value = "page", defaultValue = "1") Integer page, @RequestParam(value = "count", defaultValue = "6") Integer count) {
-        List<Comment> comments;
-        comments = commentService.getAllComment(page, count);
-        int totalCount = comments.size();
-        Map<String, Object> map = new HashMap<>();
-        map.put("totalCount", totalCount);
-        map.put("comments", comments);
-        return map;
-    }
-
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public Map<String, Object> getUserComment(@RequestParam(value = "uid", defaultValue = "-1") Long uid, @RequestParam(value = "page", defaultValue = "1") Integer page, @RequestParam(value = "count", defaultValue = "6") Integer count) {
         List<Comment> comments;

@@ -6,6 +6,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 @Service
@@ -39,6 +40,7 @@ public class UserService {
         User userDB = userMapper.loadUserByUsername(user.getUsername());
         if (userDB != null) return 2;
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setRegTime(new Timestamp(System.currentTimeMillis()));
         long result = userMapper.reg(user);
         if (result == 1) return 0;
         else return 3;
@@ -48,8 +50,12 @@ public class UserService {
         return userMapper.deleteUserById(uid);
     }
 
-    public int updateUserRole(Long rid, Long id) {
-        return userMapper.setUserRole(rid, id);
+    public int updateUserRole(Long role, Long id) {
+        return userMapper.setUserRole(role, id);
+    }
+
+    public List<User> getUserByUsername(String username) {
+        return userMapper.getUserByUsername(username);
     }
 
     public User getUserById(Long id) {
@@ -71,5 +77,4 @@ public class UserService {
     public List<Integer> getDataStatistics() {
         return userMapper.getDataStatistics();
     }
-
 }

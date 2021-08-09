@@ -40,11 +40,6 @@ public class LoginRegController {
             return new RespBean("error", "Login Fail!");
     }
 
-    @RequestMapping("/login_page")
-    public RespBean loginPage() {
-        return new RespBean("error", "Please login!");
-    }
-
     @PostMapping("/reg")
     public RespBean reg(User user) {
         int result = userService.reg(user);

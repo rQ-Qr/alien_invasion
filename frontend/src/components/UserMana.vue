@@ -1,124 +1,157 @@
 <template>
-    <div>
-    //下面的div给表一个容器
-       <div id="myChart" :style="{width: '1000px', height: '500px'}"></div>
+  <div v-loading="loading">
+    <div style="margin-top: 20px;display: flex;justify-content: center">
+      <el-input
+        placeholder="searching user by username..."
+        prefix-icon="el-icon-search"
+        v-model="keywords" style="width: 400px" size="small">
+      </el-input>
+      <el-button type="primary" icon="el-icon-search" size="small" style="margin-left: 3px" @click="searchClick">Search
+      </el-button>
     </div>
+    <div style="display: flex;justify-content: space-around;flex-wrap: wrap">
+      <el-card style="width:330px;margin-top: 20px;margin-left: 20px;" v-for="(user,index) in users" :key="index"
+      >
+        <div>
+          <el-button style="float: right; padding: 0px 0;color: #ff0509" type="text" icon="el-icon-delete"
+                     @click="deleteUser(user.id)">Delete
+          </el-button>
+          <div style="text-align: left;color:#20a0ff;font-size: 12px;margin-top: 13px">
+            <span>User Name:&nbsp&nbsp</span><span>{{user.username}}</span>
+          </div>
+          <div style="text-align: left;color:#20a0ff;font-size: 12px;margin-top: 13px">
+            <span>Reg Time:&nbsp&nbsp&nbsp&nbsp&nbsp</span><span>{{user.regTime | formatDateTime}}</span>
+          </div>
+          <div style="text-align: left;color:#20a0ff;font-size: 12px;margin-top: 13px">
+            <form>
+              <span>User Role:&nbsp&nbsp&nbsp</span>
+              <el-select v-model="user.role" style="width:42%" size="mini">
+                <el-option
+                  v-for="item in roles"
+                  :key="item.role"
+                  :label="item.label"
+                  :value="item.value"
+                  selected="selected">
+                </el-option>
+              </el-select>
+              <el-button type="text" icon="el-icon-edit-outline" style="padding-top: 0px" slot="reference"
+                         @click="updateRole(user.role, user.id, index)">Change</el-button>
+            </form>
+          </div>
+        </div>
+      </el-card>
+    </div>
+  </div>
 </template>
 <script>
-    // 引入基本模板
-    import * as echarts from 'echarts/lib/echarts';
-    import 'echarts/lib/chart/bar';
-    import 'echarts/lib/component/tooltip';
-    import 'echarts/lib/component/title';
-    import { LegendComponent } from 'echarts/components';
-    import { ToolboxComponent } from 'echarts/components';
-    import { GridComponent } from 'echarts/components';
-    import { LineChart } from 'echarts/charts';
-    echarts.use([LegendComponent]);
-    echarts.use([ToolboxComponent]);
-    echarts.use([GridComponent]);
-    echarts.use([LineChart]);
-
-    export default {
-        name: "DataCount",
-        data() {
-          return {
-            polar: {
-                title: {
-                    text: '',
-                    subtext: ''
-                },
-                tooltip: {
-                    trigger: 'axis'
-                },
-                legend: {
-                    data:['最高','最低']
-                },
-                toolbox: {
-                    show: true,
-                    feature: {
-                        dataZoom: {
-                            yAxisIndex: 'none'
-                        },
-                        dataView: {readOnly: false},
-                        magicType: {type: ['line', 'bar']},
-                        restore: {},
-                        saveAsImage: {}
-                    }
-                },
-                xAxis:  {
-                    type: 'category',
-                    boundaryGap: false,
-                    data: ['2019-02-25','2019-03-04','2019-03-18','2019-03-26','2019-04-16','2019-04-26','2019-05-04']
-                },
-                yAxis: {
-                    type: 'value',
-                    axisLabel: {
-                        formatter: '{value}'
-                    }
-                },
-                series: [
-                    {
-                        name:'最高',
-                        type:'line',
-                        data:[11, 11, 15, 13, 12, 13, 10],
-                        markPoint: {
-                            data: [
-                                {type: 'max', name: '最大值'},
-                                {type: 'min', name: '最小值'}
-                            ]
-                        },
-                        markLine: {
-                            data: [
-                                {type: 'average', name: '平均值'}
-                            ]
-                        }
-                    },
-                    {
-                        name:'最低',
-                        type:'line',
-                        data:[1, -2, 2, 5, 3, 2, 0],
-                        markPoint: {
-                            data: [
-                                {name: '周最低', value: 2, xAxis: 1, yAxis: 1.5}
-                            ]
-                        },
-                        markLine: {
-                            data: [
-                                {type: 'average', name: '平均值'},
-                                [{
-                                    symbol: 'none',
-                                    x: '90%',
-                                    yAxis: 'max'
-                                }, {
-                                    symbol: 'circle',
-                                    label: {
-                                        normal: {
-                                            position: 'start',
-                                            formatter: '最大值'
-                                        }
-                                    },
-                                    type: 'max',
-                                    name: '最高点'
-                                }]
-                            ]
-                        }
-                    }
-                ]
-            }
-          }
-        },
-        mounted(){
-            this.drawLine();
-        },
-        methods:{
-            drawLine(){
-                // 基于准备好的dom，初始化echarts实例
-                let myChart = echarts.init(document.getElementById('myChart'));
-                // 绘制图表
-                myChart.setOption(this.polar);
-                console.log(this.polar);
-            }
+  import {getRequest} from '../utils/api'
+  import {putRequest} from '../utils/api'
+  import {deleteRequest} from '../utils/api'
+  export default{
+    mounted: function () {
+      this.loading = true;
+      this.loadUserList();
+      this.cardloading = Array.apply(null, Array(20)).map(function (item, i) {
+        return false;
+      });
+      this.eploading = Array.apply(null, Array(20)).map(function (item, i) {
+        return false;
+      });
+    },
+    methods: {
+      updateRole(role, id, index){
+        var _this = this;
+        if (id==sessionStorage.getItem("uid")) {
+          _this.$message({type: 'error', message: 'You cannot change your role!'});
+          return;
         }
+        _this.cardloading.splice(index, 1, true)
+        putRequest("/admin/user/role", {role: role, id: id}).then(resp=> {
+          if (resp.status == 200 && resp.data.status == 'success') {
+            _this.$message({type: resp.data.status, message: resp.data.msg});
+            _this.loadOneUserById(id, index);
+          } else {
+            _this.cardloading.splice(index, 1, false)
+            _this.$message({type: 'error', message: 'Update fail!'});
+          }
+        }, resp=> {
+          _this.cardloading.splice(index, 1, false)
+          if (resp.response.status == 403) {
+            var data = resp.response.data;
+            _this.$message({type: 'error', message: data});
+          }
+        });
+      },
+
+      deleteUser(id){
+        var _this = this;
+        if (id==sessionStorage.getItem("uid")) {
+          _this.$message({type: 'error', message: 'You cannot delete yourself!'});
+          return;
+        }
+        this.$confirm('Are you sure to delete the user?', 'Warning', {
+          confirmButtonText: 'Confirm',
+          cancelButtonText: 'Cancel',
+          type: 'warning'
+        }).then(() => {
+          _this.loading = true;
+          deleteRequest("/admin/user/" + id).then(resp=> {
+            if (resp.status == 200 && resp.data.status == 'success') {
+              _this.$message({type: 'success', message: 'Deletion success!'})
+              _this.loadUserList();
+              return;
+            }
+            _this.loading = false;
+            _this.$message({type: 'error', message: 'Deletion fail!'})
+          }, resp=> {
+            _this.loading = false;
+            _this.$message({type: 'error', message: 'Deletion fail!'})
+          });
+        }).catch(() => {
+          _this.$message({
+            type: 'info',
+            message: 'Cancel deletion'
+          });
+        });
+      },
+
+      loadUserList(){
+        var _this = this;
+        getRequest("/admin/user?username="+this.keywords).then(resp=> {
+          _this.loading = false;
+          if (resp.status == 200) {
+            _this.users = resp.data;
+            console.log(_this.users);
+          } else {
+            _this.$message({type: 'error', message: 'Data load fail!'});
+          }
+        }, resp=> {
+          _this.loading = false;
+          if (resp.response.status == 403) {
+            var data = resp.response.data;
+            _this.$message({type: 'error', message: data});
+          }
+        });
+      },
+      searchClick(){
+        this.loading = true;
+        this.loadUserList();
+      }
+    },
+    data(){
+      return {
+        loading: false,
+        eploading: [],
+        cardloading: [],
+        keywords: '',
+        users: [],
+        allRoles: [],
+        roles: [
+        {value: 0, label: 'regular user'},
+        {value: 1, label: 'premium user'},
+        {value: 2, label: 'administrator'}],
+        cpRoles: []
+      }
     }
+  }
 </script>

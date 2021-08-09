@@ -1,6 +1,5 @@
 package edu.alieninvasion.backend.service;
 
-import edu.alieninvasion.backend.Utils.Util;
 import edu.alieninvasion.backend.bean.Comment;
 import edu.alieninvasion.backend.mapper.CommentMapper;
 import org.springframework.beans.factory.annotation.Autowired;
