@@ -56,7 +56,7 @@ public class GameController implements KeyListener {
     }
 
     public void updateBonus() {
-        if(models.getBonus().getY()>0 && models.stats.getScore()>400){
+        if(models.getBonus().getY()>0 && models.stats.getScore()>=400){
             models.getBonus().down();
         }
         checkBonusCollision();
