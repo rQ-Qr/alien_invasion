@@ -97,6 +97,7 @@
                 sessionStorage.setItem("role", "admin");
               sessionStorage.setItem("username", json.username);
               sessionStorage.setItem("uid", json.uid);
+              sessionStorage.setItem("score", json.score);
               _this.$router.replace({path: '/home'});
             } else {
               _this.$alert(json.msg, 'Fail!');

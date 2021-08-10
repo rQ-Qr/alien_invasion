@@ -8,6 +8,9 @@ import edu.mygdx.controller.GameController;
 import edu.mygdx.model.GameModel;
 import edu.mygdx.model.Sound;
 import edu.mygdx.view.GameView;
+import edu.mygdx.view.RegFrame;
+
+import javax.swing.*;
 
 public class MyGdxGame extends ApplicationAdapter {
 	SpriteBatch batch;

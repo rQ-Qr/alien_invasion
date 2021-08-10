@@ -2,6 +2,7 @@
   <el-container class="home_container">
     <el-header>
       <div class="home_title">Alien Invasion</div>
+      <div class="home_score" v-if="isLogin">My Highest Score: {{score}}</div>
       <div class="home_userinfoContainer">
         <span v-if="!isLogin" class="el-dropdown-link home_userinfo">
           <router-link to="/login">Sign In or Sign up</router-link>
@@ -58,7 +59,8 @@
         currentUserName:
         sessionStorage.getItem("username")==null? "" : sessionStorage.getItem("username"),
         isLogin: sessionStorage.getItem("username")!=null,
-        isAdmin: sessionStorage.getItem("role")!=null
+        isAdmin: sessionStorage.getItem("role")!=null,
+        score: sessionStorage.getItem("score")
       }
     }
   }
@@ -94,6 +96,11 @@
   .home_title {
     color: #fff;
     font-size: 22px;
+    display: inline;
+  }
+
+  .home_score {
+    color: #fff;
     display: inline;
   }
 

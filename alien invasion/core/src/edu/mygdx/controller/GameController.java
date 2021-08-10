@@ -82,6 +82,13 @@ public class GameController implements KeyListener {
         checkAlienBottom(aliens);
     }
 
+    public void playAgain() {
+        models.stats.resetStats();
+        Setting.resetSpeed();
+        if(models.stats.getUser()!=null)
+            RegController.updateScore(models.stats.getUser().getUid(), (long)models.stats.getHighScore());
+    }
+
     private void checkBulletCollision(List<Bullet> bullets) {
         List<Alien> aliens = models.getAliens();
         Set<Bullet> bulletSet = new HashSet<>();

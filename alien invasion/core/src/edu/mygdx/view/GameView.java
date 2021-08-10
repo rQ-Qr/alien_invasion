@@ -18,6 +18,10 @@ public class GameView {
     public GameView(GameModel models, GameController controller) {
         frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        JFrame regFrame = new RegFrame(models, this);
+        regFrame.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
+        regFrame.setLocationRelativeTo(null);
+        regFrame.setAlwaysOnTop(true);
         this.models = models;
         this.controller = controller;
         this.button = new Button();
@@ -52,11 +56,15 @@ public class GameView {
                 controller.checkState();
                 panel.paint();
             }
-            models.stats.resetStats();
-            Setting.resetSpeed();
+            controller.playAgain();
             this.button.setEnabled(true);
             this.button.setVisible(true);
             panel.paint();
         }
     }
+
+    public void refresh() {
+        this.panel.paint();
+    }
+
 }

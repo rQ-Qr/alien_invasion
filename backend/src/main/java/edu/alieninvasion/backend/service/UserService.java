@@ -28,6 +28,7 @@ public class UserService {
     }
 
     public int login(User user) {
+        System.out.println(user);
         if(user.getUsername().length()==0 || user.getPassword().length()==0) return 1;
         User userDB = loadUserByUsername(user.getUsername());
         if(userDB.getUsername()==null || userDB.getUsername().length()==0 ) return 2;
@@ -48,6 +49,10 @@ public class UserService {
 
     public int deleteUserById(Long uid) {
         return userMapper.deleteUserById(uid);
+    }
+
+    public int updateUserScore(Long score, Long id) {
+        return userMapper.setUserScore(score, id);
     }
 
     public int updateUserRole(Long role, Long id) {

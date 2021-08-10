@@ -1,21 +1,21 @@
-package edu.alieninvasion.backend.bean;
+package edu.mygdx.model;
 
 import java.sql.Timestamp;
 
 public class User {
-    private Long id;
+    private Long uid;
     private String username;
     private String password;
     private Long role;
     private Long score; // game highest score
     private Timestamp regTime;
 
-    public Long getId() {
-        return id;
+    public Long getUid() {
+        return uid;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setUid(Long uid) {
+        this.uid = uid;
     }
 
     public String getUsername() {
@@ -57,6 +57,5 @@ public class User {
     public void setScore(Long score) {
         this.score = score;
     }
-
 
 }

@@ -20,6 +20,9 @@
             <span>User Name:&nbsp&nbsp</span><span>{{user.username}}</span>
           </div>
           <div style="text-align: left;color:#20a0ff;font-size: 12px;margin-top: 13px">
+            <span>Best Score:&nbsp&nbsp&nbsp</span><span>{{user.score}}</span>
+          </div>
+          <div style="text-align: left;color:#20a0ff;font-size: 12px;margin-top: 13px">
             <span>Reg Time:&nbsp&nbsp&nbsp&nbsp&nbsp</span><span>{{user.regTime | formatDateTime}}</span>
           </div>
           <div style="text-align: left;color:#20a0ff;font-size: 12px;margin-top: 13px">

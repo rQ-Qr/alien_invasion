@@ -6,6 +6,8 @@ public class Setting {
     static public int screenWidth = 1000;
     static public int screenHeight = 650;
 
+    static public User user;
+
     static int shipSize = 50;
     static int shipX = screenWidth/2-shipSize/2;
     static int shipY = screenHeight-shipSize-10;

@@ -16,6 +16,8 @@ public interface UserMapper {
 
     int setUserRole(@Param("role") Long role, @Param("id") Long id);
 
+    int setUserScore(@Param("score") Long score, @Param("id") Long id);
+
     User getUserById(@Param("id") Long id);
 
     List<User> getUserByUsername(@Param("username") String username);

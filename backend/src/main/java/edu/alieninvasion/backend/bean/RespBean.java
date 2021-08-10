@@ -6,17 +6,20 @@ public class RespBean {
     private String username;
     private Long uid;
     private Long role;
+    private Long score;
 
     public RespBean(String status, String msg) {
         this.status = status;
         this.msg = msg;
     }
-    public RespBean(String status, String msg, Long uid, Long role, String username) {
+
+    public RespBean(String status, String msg, Long uid, Long role, String username, Long score) {
         this.username = username;
         this.status = status;
         this.msg = msg;
         this.uid = uid;
         this.role = role;
+        this.score = score;
     }
 
     public String getStatus() {
@@ -57,5 +60,13 @@ public class RespBean {
 
     public void setRole(Long role) {
         this.role = role;
+    }
+
+    public Long getScore() {
+        return score;
+    }
+
+    public void setScore(Long score) {
+        this.score = score;
     }
 }

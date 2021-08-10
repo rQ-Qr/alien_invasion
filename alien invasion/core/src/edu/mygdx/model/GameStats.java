@@ -10,6 +10,7 @@ public class GameStats {
     int level;
     boolean gameState;
     List<Ship> ships;
+    User user;
 
     public GameStats() {
         gameState = true;
@@ -17,6 +18,12 @@ public class GameStats {
         highScore = 0;
         level = 1;
         resetStats();
+    }
+
+    public void updateStats() {
+        if(user.getScore()!=null) {
+            this.highScore = (int)(long)user.getScore();
+        }
     }
 
     public void creatShips() {
@@ -71,6 +78,10 @@ public class GameStats {
         return highScore;
     }
 
+    public void setHighScore(int highScore) {
+        this.highScore = highScore;
+    }
+
     public int getLevel() {
         return level;
     }
@@ -78,4 +89,14 @@ public class GameStats {
     public List<Ship> getShips() {
         return ships;
     }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+
 }
