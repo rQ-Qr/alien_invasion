@@ -32,6 +32,7 @@ public class GamePanel extends JPanel {
         drawBullets(g);
         drawAliens(g);
         drawScore(g);
+        drawBonus(g);
 
     }
 
@@ -54,6 +55,11 @@ public class GamePanel extends JPanel {
             Alien alien = aliens.get(i);
             g.drawImage(alien.getImage(), alien.getX(), alien.getY(), alien.getSize(), alien.getSize(), this);
         }
+    }
+
+    private void drawBonus(Graphics g) {
+        Bonus bonus = models.getBonus();
+        g.drawImage(bonus.getImage(), bonus.getX(), bonus.getY(), bonus.getSize(), bonus.getSize(), this);
     }
 
     private void drawScore(Graphics g) {

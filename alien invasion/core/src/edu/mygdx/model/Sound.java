@@ -38,4 +38,8 @@ public class Sound {
     public static String explosion(){
         return "./core/assets/sounds/explosion.wav";
     }
+
+    public static String bonusSound(){
+        return "./core/assets/sounds/bonus.wav";
+    }
 }

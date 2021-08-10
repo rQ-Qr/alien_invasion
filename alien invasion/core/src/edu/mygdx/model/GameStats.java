@@ -43,6 +43,13 @@ public class GameStats {
         gameState = shipNum>0;
     }
 
+    public void gainBonus(){
+        shipNum += 1;
+        int x = Setting.screenWidth - (shipNum) * 40;
+        Ship ship = new Ship(x, 10, 30);
+        ships.add(ship);
+    }
+
     public void resetStats() {
         gameState = true;
         this.shipNum = Setting.shipLimit;

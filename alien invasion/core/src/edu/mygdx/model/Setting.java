@@ -25,6 +25,9 @@ public class Setting {
     static int bulletHeight = 15;
     static Color bulletColor = new Color(255, 255, 0);
 
+    static int bonusX = screenWidth/2-200;
+    static int bonusY = 10;
+
     static int speedup_scale = 1;
 
     public static void resetSpeed() {

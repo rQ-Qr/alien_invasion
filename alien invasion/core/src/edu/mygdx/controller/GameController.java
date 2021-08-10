@@ -19,14 +19,20 @@ public class GameController implements KeyListener {
     public void checkState() {
         updateShip();
         updateBullets();
+
         if(models.getAliens().size()==0) {
             models.getBullets().clear();
             models.getShip().recenter();
+            models.getBonus();
             models.stats.levelUp();
             models.createAliens();
+            models.createBonus();
             Setting.increaseSpeed();
         }
-        else updateAliens();
+        else {
+            updateAliens();
+            updateBonus();
+        }
     }
 
     public void updateShip() {
@@ -47,6 +53,13 @@ public class GameController implements KeyListener {
             bullet.move();
         }
         checkBulletCollision(bullets);
+    }
+
+    public void updateBonus() {
+        if(models.getBonus().getY()>0 && models.stats.getScore()>400){
+            models.getBonus().down();
+        }
+        checkBonusCollision();
     }
 
     public void updateAliens() {
@@ -114,6 +127,19 @@ public class GameController implements KeyListener {
                 break;
             }
         }
+    }
+
+    private void checkBonusCollision() {
+        Ship ship = models.getShip();
+        Bonus bonus = models.getBonus();
+        Rectangle shipRec = new Rectangle(ship.getX(), ship.getY(), ship.getSize(), ship.getSize());
+        Rectangle bonusRec = new Rectangle(bonus.getX(), bonus.getY(), bonus.getSize(), bonus.getSize());
+            if(shipRec.intersects(bonusRec)) {
+                Sound.playSound(Sound.bonusSound());
+                bonus.clear();
+                models.stats.gainBonus();
+            }
+
     }
 
     private void shipHit(Ship ship) {

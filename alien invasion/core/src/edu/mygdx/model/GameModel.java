@@ -8,6 +8,7 @@ public class GameModel {
     Ship ship;
     List<Bullet> bullets;
     List<Alien> aliens;
+    Bonus bonus;
     public GameStats stats;
 
 
@@ -16,6 +17,7 @@ public class GameModel {
         this.ship = new Ship(Setting.shipX, Setting.shipY);
         bullets = new ArrayList<>();
         createAliens();
+        this.bonus = new Bonus(Setting.bonusX, Setting.bonusY);
     }
 
     public Ship getShip() {
@@ -35,6 +37,10 @@ public class GameModel {
         }
 
         this.aliens = list;
+    }
+
+    public void createBonus() {
+        Bonus bonus = new Bonus(ship.getX()+ship.getSize()/2-1, ship.getY()-950);
     }
 
     public void addBullet() {
@@ -60,6 +66,8 @@ public class GameModel {
     public List<Alien> getAliens() {
         return aliens;
     }
+
+    public Bonus getBonus(){return bonus;}
 
 }
 
