@@ -12,10 +12,24 @@ import edu.mygdx.view.RegFrame;
 
 import javax.swing.*;
 
+/**
+ * This is the file for initial the game.
+ *
+ * @author Shenquan Wang, Ran Qin
+ * @version 1.0
+ * @since 08/15/2021
+ */
 public class MyGdxGame extends ApplicationAdapter {
+	/**
+	 * This is the filed for this file.
+	 */
 	SpriteBatch batch;
 	Texture img;
 
+	/**
+	 * This is the main method for this game.
+	 * @param args argument for main function.
+	 */
 	public static void main(String[] args) {
 		GameModel models = new GameModel();
 		GameController controller = new GameController(models);
@@ -24,12 +38,18 @@ public class MyGdxGame extends ApplicationAdapter {
 		view.startGame();
 	}
 
+	/**
+	 * This method is for creating.
+	 */
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
 		img = new Texture("badlogic.jpg");
 	}
 
+	/**
+	 * This method is the render function.
+	 */
 	@Override
 	public void render () {
 		ScreenUtils.clear(1, 0, 0, 1);
@@ -37,7 +57,10 @@ public class MyGdxGame extends ApplicationAdapter {
 		batch.draw(img, 0, 0);
 		batch.end();
 	}
-	
+
+	/**
+	 * This method is to dispose the creating.
+	 */
 	@Override
 	public void dispose () {
 		batch.dispose();

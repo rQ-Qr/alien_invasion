@@ -6,8 +6,17 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
+/**
+ * This is Button model file for building button.
+ *
+ * @author Ran Qin, Shenquan Wang
+ * @version 1.0
+ * @since 08/13/2021
+ */
 public class Button extends JButton {
-
+    /**
+     * This is the constructor for Button, which was extended from JButton.
+     */
     public Button() {
         super("PLAY");
         Font font = new Font("", Font.BOLD, 20);
