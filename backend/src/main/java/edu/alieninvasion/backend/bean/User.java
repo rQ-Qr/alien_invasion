@@ -1,14 +1,21 @@
 package edu.alieninvasion.backend.bean;
 
 import java.sql.Timestamp;
-
+/**
+ * <h1>User</h1>
+ * The entity class storing user data
+ *
+ * @author  Ran Qin and Shenquan Wang
+ * @version 1.0
+ * @since   2021-07-16
+ */
 public class User {
-    private Long id;
+    private Long id;    // user id
     private String username;
     private String password;
-    private Long role;
+    private Long role;  // user role
     private Long score; // game highest score
-    private Timestamp regTime;
+    private Timestamp regTime;  // register time
 
     public Long getId() {
         return id;

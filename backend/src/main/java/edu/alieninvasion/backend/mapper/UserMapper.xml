@@ -7,7 +7,7 @@
         SELECT * FROM `user` WHERE username=#{username}
     </select>
     <insert id="reg" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO `user` set username=#{username}, password=#{password}, `role`=#{role}, regTime = #{regTime}, score = 0
+        INSERT INTO `user` set username=#{username}, password=#{password}, `role`=#{role}, regTime = #{regTime}, score = #{score}
     </insert>
 
     <select id="getUserById" resultType="User">

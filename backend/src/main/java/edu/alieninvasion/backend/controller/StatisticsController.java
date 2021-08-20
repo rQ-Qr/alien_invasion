@@ -10,15 +10,30 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * <h1>StatisticsController</h1>
+ * This is a controller class to deal with request about data statistics.
+ *
+ * @author  Ran Qin and Shenquan Wang
+ * @version 1.0
+ * @since   2021-07-16
+ */
+
 @RestController
 public class StatisticsController {
     UserService userService;
 
+    // constructor of the class
     @Autowired
     public StatisticsController(UserService userService) {
         this.userService = userService;
     }
 
+    /**
+     * This method is used to response statistics request from frontend
+     *
+     * @return the map storing the date and statistics data
+     */
     @RequestMapping("/dataStatistics")
     public Map<String,Object> dataStatistics() {
         Map<String, Object> map = new HashMap<>();

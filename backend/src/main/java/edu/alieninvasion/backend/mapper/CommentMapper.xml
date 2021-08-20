@@ -16,6 +16,10 @@
         DELETE FROM comment WHERE id = #{cid}
     </delete>
 
+    <delete id="deleteCommentByUid">
+        DELETE FROM comment WHERE uid = #{uid}
+    </delete>
+
     <select id="getCommentByUid" resultType="Comment">
         SELECT * FROM comment where uid = #{uid} ORDER BY comment.editTime DESC limit #{start},#{count};
     </select>

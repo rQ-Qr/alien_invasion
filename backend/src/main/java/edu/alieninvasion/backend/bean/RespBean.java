@@ -1,12 +1,19 @@
 package edu.alieninvasion.backend.bean;
-
+/**
+ * <h1>RespBean</h1>
+ * The entity class storing response content to frontend and client
+ *
+ * @author  Ran Qin and Shenquan Wang
+ * @version 1.0
+ * @since   2021-07-16
+ */
 public class RespBean {
-    private String status;
-    private String msg;
-    private String username;
-    private Long uid;
-    private Long role;
-    private Long score;
+    private String status;  // load status of data
+    private String msg;     // load result of data
+    private String username;    // name of current user
+    private Long uid;   // id of current user
+    private Long role;  // role of current user
+    private Long score; // highest score of current user
 
     public RespBean(String status, String msg) {
         this.status = status;
