@@ -8,18 +8,21 @@ import Download from '@/components/Download'
 import UserMana from '@/components/UserMana'
 import DataChart from '@/components/DataChart'
 
+// add the router in global range
 Vue.use(Router);
 
+// configure the router
 export default new Router({
   routes: [
     {
       path: '/',
       name: '',
-      component: Home,
+      redirect: '/introduction',
       hidden: true
     }, {
       path: '/home',
       name: 'Home',
+      redirect: '/introduction',
       component: Home,
       hidden: true
     }, {

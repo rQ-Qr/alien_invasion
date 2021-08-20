@@ -19,7 +19,7 @@
     <el-container>
       <el-aside width="200px">
         <el-menu
-          default-active="0"
+          default-active="1"
           class="el-menu-vertical-demo" style="background-color: #ECECEC" router>
           <template v-for="(item,index) in this.$router.options.routes" v-if="!item.hidden">
             <template v-if="isAdmin || index<6">
@@ -37,10 +37,13 @@
     </el-container>
   </el-container>
 </template>
+
 <script>
+
   import {getRequest} from '../utils/api'
 
   export default{
+
     methods: {
       logout() {
         this.isLogin = false;
@@ -50,10 +53,12 @@
         this.$router.replace({path: '/home'});
       }
     },
+
     mounted: function () {
       currentUserName:
       sessionStorage.getItem("username")==null? "" : sessionStorage.getItem("username");
     },
+
     data(){
       return {
         currentUserName:
@@ -65,6 +70,7 @@
     }
   }
 </script>
+
 <style>
   .home_container {
     height: 100%;

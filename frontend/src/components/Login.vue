@@ -29,6 +29,7 @@
 
   export default {
     name: "Login",
+
     data(){
       return {
         name: '',
@@ -47,6 +48,7 @@
         if(_this.checked) _this.role = 1;
         else _this.role = 0;
       },
+
       reg(){
         var _this = this;
         const { name, pwd, role, $router} = this

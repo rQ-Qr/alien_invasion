@@ -17,6 +17,10 @@ buildscript {
 allprojects {
     apply plugin: "eclipse"
 
+    apply plugin:'java'
+
+    apply plugin:'idea'
+
     version = '1.0'
     ext {
         appName = "alien invasion"
@@ -40,7 +44,6 @@ allprojects {
 
 project(":desktop") {
     apply plugin: "java-library"
-
 
     dependencies {
         implementation project(":core")
@@ -72,7 +75,6 @@ project(":html") {
 
 project(":core") {
     apply plugin: "java-library"
-
 
     dependencies {
         api "com.badlogicgames.gdx:gdx:$gdxVersion"

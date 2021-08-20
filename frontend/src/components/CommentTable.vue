@@ -88,6 +88,7 @@
   import {isNotNullORBlank} from '../utils/utils'
 
   export default{
+
     data() {
       return {
         comments: [],
@@ -107,6 +108,7 @@
         }
       }
     },
+
     mounted: function () {
       var _this = this;
       _this.loading = true;
@@ -117,6 +119,7 @@
         _this.loadComments(_this.currentPage, _this.pageSize);
       })
     },
+
     methods: {
       handleEdit(index, data) {
         var _this = this;
@@ -169,7 +172,7 @@
         this.loadComments(1, this.pageSize);
       },
 
-      //翻页
+      //change the page
       currentChange(currentPage){
         this.currentPage = currentPage;
         this.loading = true;
@@ -239,8 +242,7 @@
   }
 </script>
 
-
-<style>
+<style type="text/css">
   .post-article > .main {
     /*justify-content: flex-start;*/
     display: flex;
@@ -256,11 +258,10 @@
     margin-left: 20px;
     vertical-align: bottom;
   }
+
   .post-article {
   }
-</style>
 
-<style type="text/css">
   .blog_table_footer {
     display: flex;
     box-sizing: content-box;

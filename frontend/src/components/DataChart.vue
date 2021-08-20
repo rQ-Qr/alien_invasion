@@ -4,8 +4,8 @@
        <div id="myChart" :style="{width: '1000px', height: '500px'}"></div>
     </div>
 </template>
-<script>
 
+<script>
     import * as echarts from 'echarts/lib/echarts';
     import 'echarts/lib/chart/bar';
     import 'echarts/lib/component/tooltip';
@@ -22,7 +22,7 @@
     import {getRequest} from '../utils/api'
 
     export default{
-        name: "DataCount",
+
         created() {
           getRequest("/dataStatistics").then(resp=> {
             if (resp.status == 200) {

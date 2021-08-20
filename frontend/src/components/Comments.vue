@@ -12,14 +12,16 @@
     </el-main>
   </el-container>
 </template>
+
 <script>
   import CommentTable from '@/components/CommentTable'
-  import CommentAdd from '@/components/CommentAdd'
   import {postRequest} from '../utils/api'
   import {putRequest} from '../utils/api'
   import {deleteRequest} from '../utils/api'
   import {getRequest} from '../utils/api'
+
   export default {
+
     data() {
       return {
         activeName: 'all',
@@ -27,16 +29,18 @@
         isLogin: sessionStorage.getItem("username")!=null,
       };
     },
+
     mounted: function() {
     },
+
     methods: {
       handleClick(tab, event) {
 
       },
     },
+
     components: {
       'comment_table': CommentTable,
-      'comment_add': CommentAdd,
     }
   };
 </script>

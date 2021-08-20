@@ -46,11 +46,14 @@
     </div>
   </div>
 </template>
+
 <script>
   import {getRequest} from '../utils/api'
   import {putRequest} from '../utils/api'
   import {deleteRequest} from '../utils/api'
+
   export default{
+
     mounted: function () {
       this.loading = true;
       this.loadUserList();
@@ -61,6 +64,7 @@
         return false;
       });
     },
+
     methods: {
       updateRole(role, id, index){
         var _this = this;
@@ -141,6 +145,7 @@
         this.loadUserList();
       }
     },
+    
     data(){
       return {
         loading: false,

@@ -51,8 +51,6 @@ public class RegController {
     public static void updateScore(Long id, Long score) {
         String url = "http://localhost:8081/client/score";
         JSONObject jsonObject = new JSONObject();
-        System.out.println(id);
-        System.out.println(score);
         jsonObject.put("id", id);
         jsonObject.put("score", score);
         sendPost(url, jsonObject);
@@ -103,9 +101,6 @@ public class RegController {
             e.printStackTrace();
         }
         User user = JSONObject.parseObject(data, User.class);
-        System.out.println(user.getUid());
-        System.out.println(user.getUsername());
-        System.out.println(user.getScore());
         return user;
     }
 }

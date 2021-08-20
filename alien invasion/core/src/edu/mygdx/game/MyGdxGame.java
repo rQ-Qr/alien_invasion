@@ -8,9 +8,6 @@ import edu.mygdx.controller.GameController;
 import edu.mygdx.model.GameModel;
 import edu.mygdx.model.Sound;
 import edu.mygdx.view.GameView;
-import edu.mygdx.view.RegFrame;
-
-import javax.swing.*;
 
 /**
  * This is the file for initial the game.
