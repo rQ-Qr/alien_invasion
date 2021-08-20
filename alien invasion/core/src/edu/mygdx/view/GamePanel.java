@@ -9,17 +9,39 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * This is the game panel for game visualization which is extended from JPanel.
+ *
+ * @author Shenquan Wang, Ran Qin
+ * @version 1.0
+ * @since 08/15/2021
+ */
 public class GamePanel extends JPanel {
+    /**
+     * filed of this file.
+     */
     GameModel models;
+
+    /**
+     * This is the constructor for this file.
+     * @param models the game model.
+     */
     public GamePanel(GameModel models) {
         this.models = models;
         super.setFocusable(true);
     }
 
+    /**
+     * This method is for repaint.
+     */
     public void paint() {
         repaint();
     }
 
+    /**
+     * This method is for painting the component for the game.
+     * @param g the graphics for the game visualization.
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -36,11 +58,19 @@ public class GamePanel extends JPanel {
 
     }
 
+    /**
+     * This method is for drawing the ship.
+     * @param g the graphics for the game visualization.
+     */
     private void drawShip(Graphics g) {
         Ship ship = models.getShip();
         g.drawImage(ship.getImage(), ship.getX(), ship.getY(), ship.getSize(), ship.getSize(), this);
     }
 
+    /**
+     * This method is for drawing the bullets
+     * @param g the graphics for the game visualization.
+     */
     private void drawBullets(Graphics g) {
         List<Bullet> bullets = models.getBullets();
         for(Bullet bullet : bullets) {
@@ -49,6 +79,10 @@ public class GamePanel extends JPanel {
         }
     }
 
+    /**
+     * This method is for drawing the aliens.
+     * @param g the graphics for the game visualization.
+     */
     private void drawAliens(Graphics g) {
         List<Alien> aliens = models.getAliens();
         for(int i=0; i<aliens.size(); i++) {
@@ -57,11 +91,19 @@ public class GamePanel extends JPanel {
         }
     }
 
+    /**
+     * This method is for drawing the bonus.
+     * @param g the graphics for the game visualization.
+     */
     private void drawBonus(Graphics g) {
         Bonus bonus = models.getBonus();
         g.drawImage(bonus.getImage(), bonus.getX(), bonus.getY(), bonus.getSize(), bonus.getSize(), this);
     }
 
+    /**
+     * This method is for drawing the score board.
+     * @param g the graphics for the game visualization.
+     */
     private void drawScore(Graphics g) {
         String score = String.valueOf(models.stats.getScore());
         String highScore = String.valueOf(models.stats.getHighScore());
@@ -76,6 +118,10 @@ public class GamePanel extends JPanel {
         }
     }
 
+    /**
+     * This method is for drawing the game background.
+     * @param g the graphics for the game visualization.
+     */
     private void drawBackground(Graphics g) throws IOException {
         Image background = ImageIO.read(new File("./core/assets/figures/background2.png"));
         Dimension size = new Dimension(1000,800);

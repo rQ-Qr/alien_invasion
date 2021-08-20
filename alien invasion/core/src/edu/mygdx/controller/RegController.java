@@ -16,9 +16,25 @@ import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
 import com.alibaba.fastjson.JSONObject;
 
+/**
+ * This is register controller for the game.
+ *
+ * @author Ran Qin, Shenquan Wang
+ * @version 1.0
+ * @since 08/15/2021
+ */
 public class RegController {
+    /**
+     * This is the filed for this file.
+     */
     private static final CloseableHttpClient httpclient = HttpClients.createDefault();
 
+    /**
+     * This is login method for this file.
+     * @param username user name
+     * @param password user password
+     * @return user information
+     */
     public static User login(String username, String password) {
         String url = "http://localhost:8081/client/login";
         JSONObject jsonObject = new JSONObject();
@@ -27,6 +43,11 @@ public class RegController {
         return sendPost(url, jsonObject);
     }
 
+    /**
+     * This method is for updating the score.
+     * @param id user id
+     * @param score user score
+     */
     public static void updateScore(Long id, Long score) {
         String url = "http://localhost:8081/client/score";
         JSONObject jsonObject = new JSONObject();
@@ -37,6 +58,13 @@ public class RegController {
         sendPost(url, jsonObject);
     }
 
+    /**
+     * This method is for registering new user.
+     * @param username user name
+     * @param password user password
+     * @param isPremium premium role
+     * @return user information
+     */
     public static User reg(String username, String password, boolean isPremium) {
         String url = "http://localhost:8081/client/reg";
         JSONObject jsonObject = new JSONObject();
@@ -47,6 +75,12 @@ public class RegController {
         return sendPost(url, jsonObject);
     }
 
+    /**
+     * This method is for sending post.
+     * @param url link to user information
+     * @param jsonObject json object
+     * @return user  user object
+     */
     public static User sendPost(String url, JSONObject jsonObject) {
         StringEntity s = new StringEntity(jsonObject.toString(), "utf-8");
         s.setContentEncoding(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));

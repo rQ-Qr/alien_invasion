@@ -9,11 +9,21 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+/**
+ * This is Ship model file for building the game.
+ *
+ * @author Ran Qin, Shenquan Wang
+ * @version 1.0
+ * @since 08/15/2021
+ */
 public class RegFrame extends JFrame  {
+    /**
+     * This is the filed for this file.
+     */
     GameModel models;
     GameView view;
-    JTextField jTextField; //定义文本框组件
-    JPasswordField jPasswordField; //定义密码框组件
+    JTextField jTextField; //define text field
+    JPasswordField jPasswordField; //define password field
     JLabel jLabel1,jLabel2;
     JPanel jp1,jp2,jp3,jp4,jp5,jp6,jp7,jp8;
     JButton jb1,jb2,jb3; // button
@@ -22,6 +32,11 @@ public class RegFrame extends JFrame  {
     MouseListener m2;
     MouseListener m3;
 
+    /**
+     * This is the constructor for this file.
+     * @param models the models from the game.
+     * @param view the view from the game.
+     */
     public RegFrame(GameModel models, GameView view) {
         this.models = models;
         this.view = view;
@@ -50,16 +65,16 @@ public class RegFrame extends JFrame  {
         jb2.addMouseListener(m2);
         jb3.addMouseListener(m3);
 
-        //设置布局
+        //setting
         GridBagLayout gb = new GridBagLayout();
 
         this.setLayout(gb);
         jp1.add(jLabel1);
-        jp2.add(jTextField);//第一块面板添加用户名和文本框
+        jp2.add(jTextField);//first panel for username
         jp3.add(jLabel2);
-        jp4.add(jPasswordField);//第二块面板添加密码和密码输入框
+        jp4.add(jPasswordField);//second panel for password
         jp5.add(jb1);
-        jp6.add(jb2); //第三块面板添加确认和取消
+        jp6.add(jb2); //third panel for yes and no
         jp7.add(jb3);
         jp8.add(jc1);
         GridBagConstraints constraints = new GridBagConstraints();
@@ -70,7 +85,7 @@ public class RegFrame extends JFrame  {
         this.add(jp2, constraints);
         constraints.gridx = 0;
         constraints.gridy = 1;
-        this.add(jp3, constraints);  //将三块面板添加到登陆框上面
+        this.add(jp3, constraints);  //combine three panels
         constraints.gridx = 1;
         constraints.gridy = 1;
         this.add(jp4, constraints);
@@ -88,7 +103,7 @@ public class RegFrame extends JFrame  {
         this.add(jp8, constraints);
 
 
-        //设置显示
+        //setting view
         this.setSize(300, 200);
         //this.pack();
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -96,6 +111,9 @@ public class RegFrame extends JFrame  {
         this.setTitle("Alien Invasion");
     }
 
+    /**
+     * This method is for mouse operation.
+     */
     private void initMouseListener() {
         m1 = new MouseListener() {
             @Override

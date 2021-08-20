@@ -2,7 +2,17 @@ package edu.mygdx.model;
 
 import java.awt.*;
 
+/**
+ * This is the setting file for the game.
+ *
+ * @author Shenquan Wang, Ran Qin
+ * @version 1.0
+ * @since 08/14/2021
+ */
 public class Setting {
+    /**
+     * This is the filed for this file.
+     */
     static public int screenWidth = 1000;
     static public int screenHeight = 650;
 
@@ -32,6 +42,9 @@ public class Setting {
 
     static int speedup_scale = 1;
 
+    /**
+     * This method is for reset the speed of the aliens.
+     */
     public static void resetSpeed() {
         shipSpeedFactor = 1;
         bulletSpeedFactor = 3;
@@ -40,6 +53,9 @@ public class Setting {
         alienPoints = 50;
     }
 
+    /**
+     * This method is for increase the speed of the aliens.
+     */
     public static void increaseSpeed() {
         shipSpeedFactor += 1;
         bulletSpeedFactor += 1;
