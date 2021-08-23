@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"edu.mygdx.controller"},{"l":"edu.mygdx.game"},{"l":"edu.mygdx.game.client"},{"l":"edu.mygdx.game.desktop"},{"l":"edu.mygdx.model"},{"l":"edu.mygdx.view"}];updateSearchResults();
